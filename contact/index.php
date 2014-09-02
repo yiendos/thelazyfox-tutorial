@@ -1,3 +1,11 @@
+<?php
+if(isset($_POST['action']) && $_POST['action'] == 'save'){
+  echo '<pre>we need to process this information';
+  var_dump($_POST);
+  echo "<br/>but thats for another lesson</pre>";
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +14,6 @@
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oswald:bold,light,regular">
     <!-- Bootstrap -->
     <link href="/css/default.css" rel="stylesheet" media="screen">
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53ee3bba766da004"></script>
 </head>
 <body>
 <div id="home">
@@ -45,18 +52,19 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <form role="form">
+                <form role="form" method="post" enctype="multipart/form-data">
+                    <input type="hidden" id="action" name="action" value="save" />
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="Enter name">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter name" />
                     </div>
                     <div class="form-group">
                         <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" placeholder="Enter email">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Enter email" />
                     </div>
                     <div class="form-group">
                         <label for="message">Message</label>
-                        <textarea class="form-control" rows="10" id="message">say something!</textarea>
+                        <textarea class="form-control" rows="10" name="message" id="message">say something!</textarea>
                     </div>
                     <div class="form-group">
                         <label for="upload">File input</label>
@@ -65,7 +73,7 @@
                     </div>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox"> Check me out
+                            <input type="checkbox" name="checkbox" value="yes"> Check me out
                         </label>
                     </div>
                     <button type="submit" class="btn btn-default">Submit</button>
